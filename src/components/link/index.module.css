@@ -2,7 +2,7 @@
     color: white;
     text-decoration: none;
 }
-.listItem{
+.header-listItem{
     display: inline-block;
     height: auto;
     margin-right: 2%;
@@ -22,7 +22,7 @@ footer .listItem:nth-child(1) {
     margin-left: 1%;
 }
 
-header .listItem:not(:first-child) {
+.header-listItem:not(:first-child) {
     padding: 2%;
     margin-top: 1.5%;
     border-top: 2px solid #ffa000;
@@ -34,7 +34,7 @@ footer .listItem:not(:last-child) {
     border-bottom: 2px solid #234465;
 }
 
-header .listItem:hover {
+.header-listItem:hover {
     border-top: none;
     border-bottom: 2px solid #ffa000;
     font-weight: bold;
@@ -46,7 +46,7 @@ footer .listItem:hover {
     font-weight: bold;
 }
 
-aside .listItem {
+.aside-listItem {
     display: block;
     width: 98%;
     border-left: 2px solid #234465;
@@ -56,7 +56,7 @@ aside .listItem {
     text-align: center;
 }
 
-aside .listItem a {
+.aside-link {
     color: #234465;
     text-align: center;
     text-decoration: none;
@@ -65,7 +65,7 @@ aside .listItem a {
     display: block;
 }
 
-aside .listItem:hover {
+.aside-listItem:hover {
     border-left: none;
     border-right: none;
     font-weight: bold;
