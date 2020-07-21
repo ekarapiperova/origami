@@ -24,9 +24,9 @@ class Origami extends React.Component{
         const {
             origami
         }=this.state
-       return origami.map(origam=>{
+       return origami.map((origam, index)=>{
             return(
-                <Origam key={origam._id} {...origam}/>
+                <Origam key={origam._id} index={index} {...origam}/>
             )
         })
 

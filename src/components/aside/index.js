@@ -1,16 +1,21 @@
 import React from 'react'
 import styles from './index.module.css'
 import Link from '../link'
+import getNavigation from '../../utils/navigation'
 
 const Aside=({title,href,type})=>{
+    const links=getNavigation()
     return(
        <aside className={styles.aside}>
-            <Link href="#" title="Going to 1" type="aside"/>
-                <Link href="#" title="Going to 2" type="aside"/>
-                <Link href="#" title="Going to 3" type="aside"/>
-                <Link href="#" title="Going to 4" type="aside"/>
-                <Link href="#" title="Going to 5" type="aside"/>
-                <Link href="#" title="Going to 6" type="aside"/>
+           {
+                   links.map(
+                       nav=>{
+                           return(
+                               <Link href={nav.link} title={nav.title} type="aside"></Link>
+                           )
+                       }
+                   )
+               }
             
        </aside>
     )
