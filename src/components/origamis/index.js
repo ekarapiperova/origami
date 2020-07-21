@@ -12,7 +12,8 @@ class Origami extends React.Component{
     }
 
     getOrigami=async()=>{
-        const promise=await fetch('http://localhost:9999/api/origami')
+        const {length}=this.props
+        const promise=await fetch(`http://localhost:9999/api/origami?lenght=${length}`)
         const origami=await promise.json()
 
         this.setState({
@@ -37,12 +38,9 @@ class Origami extends React.Component{
     render(){
         
         return(
-            <div className={styles.main}>
-                <h1 className={styles.h1}>Origami</h1>
-                <div className={styles.posts}>
-                   {this.renderOrigami()}
-                </div>
-            </div>
+            <div className={styles.posts}>
+            {this.renderOrigami()}
+         </div>
         )
     }
 }

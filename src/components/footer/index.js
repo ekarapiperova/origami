@@ -12,7 +12,7 @@ const links=getNavigation()
                    links.map(
                        nav=>{
                            return(
-                               <Link href={nav.link} title={nav.title} type="footer"></Link>
+                               <Link key={nav.title} href={nav.link} title={nav.title} type="footer"></Link>
                            )
                        }
                    )
