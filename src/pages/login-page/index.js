@@ -12,8 +12,7 @@ class LoginPage extends React.Component{
 
         this.state={
             email:'',
-            password:'',
-            repassword:''
+            password:''
         }
     }
 

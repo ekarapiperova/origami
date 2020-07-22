@@ -17,7 +17,7 @@ function ShareThoughtsPage() {
       <SubmitBtn title="Post"/>
       </div>
       
-      <Origami lenght={3} />
+      <Origami length={3}/>
     </PageWrapper>
   );
 }
