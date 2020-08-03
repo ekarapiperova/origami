@@ -4,29 +4,55 @@ import SubmitBtn from '../../components/button'
 import PageWrapper from '../../components/page-wrapper'
 import Input from '../../components/input'
 import styles from './index.module.css'
-
+import authenticate from '../../utils/authenticate'
+import UserContext from '../../Context'
 class LoginPage extends React.Component{
 
     constructor(props){
         super(props)
 
         this.state={
-            email:'',
+            username:'',
             password:''
         }
     }
+    static contextType=UserContext;
 
-    onChage=(event,type)=>{
+
+    handleChage=(event,type)=>{
         const newState={}
             newState[type]=event.target.value
         this.setState(newState)
     }
 
+    handleSubmit=async(event)=>{
+        event.preventDefault()
+        const{
+            username,
+            password
+        }=this.state
+
+
+        //fetch
+        await authenticate('http://localhost:9999/api/user/login',{
+            username,
+            password
+        },(user)=>{
+            this.context.login(user)
+            this.props.history.push('/')
+        },(e)=>{
+            console.log("errrorororor",e);
+        })
+
+
+
+}
+
 
     render(){  
         
         const {
-            email,
+            username,
             password,
            
         }=this.state
@@ -34,21 +60,23 @@ class LoginPage extends React.Component{
         
         return(
         <PageWrapper>
-        <div className={styles.Login}>
+        <form className={styles.Login} onSubmit={this.handleSubmit}>
             <Title title="Login"/>
             <Input
-            value={email}
-            onChange={(e)=>this.onChage(e,'email')}
-            label="Email"
-            id="email"/>
+            
+            value={username}
+            onChange={(e)=>this.handleChage(e,'username')}
+            label="Username"
+            id="username"/>
             <Input
+            type="password"
             value={password}
-            onChange={(e)=>this.onChage(e,'password')}
+            onChange={(e)=>this.handleChage(e,'password')}
             label="Password"
             id="password"/>
            
-            <SubmitBtn title="Login"/>
-        </div>
+            <SubmitBtn  title="Login"/>
+        </form>
         </PageWrapper>
     )
     }

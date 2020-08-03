@@ -1,11 +1,20 @@
-import React from'react'
+import React, { Component } from'react'
 import styles from './index.module.css'
 import logo from '../../image/white-origami-bird.png'
 import LinkComp from '../link'
 import getNavigation from '../../utils/navigation'
-const Header=()=>{
-    const links=getNavigation()
-    return(
+import UserContext from '../../Context'
+class Header extends Component{
+    static contextType=UserContext
+    render(){
+        const {
+            loggedIn,
+            user
+        }=this.context
+
+        const links=getNavigation(loggedIn,user)
+
+        return(
         <header className={styles.navigation}>
                 <img  alt="" src={logo}/>
                {
@@ -25,6 +34,7 @@ const Header=()=>{
 
         </header>
     )
+            }
 
 }
 

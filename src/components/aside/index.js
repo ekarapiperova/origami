@@ -1,10 +1,18 @@
-import React from 'react'
+import React, { Component } from 'react'
 import styles from './index.module.css'
 import Link from '../link'
 import getNavigation from '../../utils/navigation'
+import UserContext from '../../Context'
 
-const Aside=({title,href,type})=>{
-    const links=getNavigation()
+class Aside extends Component{
+    static contextType=UserContext
+    render(){
+        const{
+            loggedIn,
+            user
+        }=this.context
+
+    const links=getNavigation(loggedIn,user && user.id)
     return(
        <aside className={styles.aside}>
            {
@@ -21,5 +29,5 @@ const Aside=({title,href,type})=>{
     )
 
 }
-
+}
 export default Aside
