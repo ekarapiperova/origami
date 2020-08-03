@@ -29,7 +29,7 @@ const guestLInks=[
     },
 
 ]
-return loggedIn ? authLInks:guestLInks
+return loggedIn ? authLInks : guestLInks
 }
 
 export default getNavigation
